@@ -1,0 +1,214 @@
+#include<iostream>
+#include<cstring>
+#include<math.h>
+using namespace std;
+
+class Expresscom
+{
+ protected:
+     int No, Num;
+     double i;
+     int zh=floor(i);
+     static const char city[7][10];
+
+public:
+    Expresscom(int no, int num, double zhong);
+    virtual double Feiyong() = 0;
+    virtual  void  Disp() = 0;
+    void  Edisp();
+};
+
+Expresscom::Expresscom(int no, int num, double zhong):
+   No(no),Num(num),i(zhong)
+{
+}
+
+void Expresscom::Edisp()
+{
+    cout << "重量：" << i << "KG" << endl;
+    cout << "货物个数：" << Num << endl;
+}
+
+const char Expresscom::city[7][10] =
+{
+    " ",
+    "天津", 
+    "上海",
+    "太原",
+    "广州",
+    "昆明",
+    "新疆"
+};
+
+class ETongBao :public Expresscom
+{ private:
+    static const int price[7][4];
+public:
+    ETongBao(int no, int num, double zhong):
+           Expresscom(no,num,zhong)
+    {
+    }
+    
+    double Feiyong()
+    {
+        return Num * price[No][zh];
+    }
+
+    void Disp()
+    {
+        cout << "公司名称：" << "E通宝" << endl;
+        cout << "目的地：" << city[No] << endl;
+        cout << "重量：" << i << "KG" << endl;
+        cout << "货物个数：" << Num << endl;
+        cout << "单价：" << price[No][zh] << endl;
+        cout << "总运费：" << Feiyong() << endl;
+    }
+};
+
+const int ETongBao::price[7][4] =
+{
+    0,0,0,0,
+    0,10,14,18,
+    0,15,19,23,
+    0,15,19,23,
+    0,15,21,27,
+    0,15,21,27,
+    0,15,25,35
+};
+
+class Shunfeng :public Expresscom
+{
+private:
+    static const int price[7][4];
+public:
+    Shunfeng(int no, int num, double zhong) :
+        Expresscom(no, num, zhong)
+    {
+    }
+
+    double Feiyong()
+    {
+        return Num * price[No][zh];
+    }
+
+    void Disp()
+    {
+        cout << "公司名称：" << "顺风" << endl;
+        cout << "目的地：" << city[No] << endl;
+        cout << "重量：" << i << "KG" << endl;
+        cout << "货物个数：" << Num << endl;
+        cout << "单价：" << price[No][zh] << endl;
+        cout << "总运费：" << Feiyong() << endl;
+    }
+};
+
+const int Shunfeng::price[7][4] =
+{
+    0,0,0,0,
+    0,12,14,16,
+    0,20,30,40,
+    0,20,28,36,
+    0,20,32,44,
+    0,20,32,44,
+    0,20,34,48
+};
+
+class EMS :public Expresscom
+{
+private:
+    static const int price[7][4];
+public:
+    EMS(int no, int num, double zhong) :
+        Expresscom(no, num, zhong)
+    {
+    }
+
+    double Feiyong()
+    {
+        return Num * price[No][zh];
+    }
+
+    void Disp()
+    {
+        cout << "公司名称：" << "EMS" << endl;
+        cout << "目的地：" << city[No] << endl;
+        cout << "重量：" << i << "KG" << endl;
+        cout << "货物个数：" << Num << endl;
+        cout << "单价：" << price[No][zh] << endl;
+        cout << "总运费：" << Feiyong() << endl;
+    }
+};
+
+const int EMS::price[7][4] =
+{
+    0,0,0,0,
+    0,26,38,50,
+    0,26,38,50,
+    0,26,38,50,
+    0,29,47,65,
+    0,35,65,95,
+    0,38,66,95
+};
+
+class Yuantong :public Expresscom
+{
+private:
+    static const int price[7][4];
+public:
+    Yuantong(int no, int num, double zhong) :
+        Expresscom(no, num, zhong)
+    {
+    }
+
+    double Feiyong()
+    {
+        return Num * price[No][zh];
+    }
+
+    void Disp()
+    {
+        cout << "公司名称：" << "圆通" << endl;
+        cout << "目的地：" << city[No] << endl;
+        cout << "重量：" << i << "KG" << endl;
+        cout << "货物个数：" << Num << endl;
+        cout << "单价：" << price[No][zh] << endl;
+        cout << "总运费：" << Feiyong() << endl;
+    }
+};
+
+const int Yuantong::price[7][4] =
+{
+    0,0,0,0,
+    0,10,18,26,
+    0,10,18,26,
+    0,12,24,36,
+    0,12,22,32,
+    0,15,27,39,
+    0,18,33,48
+};
+
+int main()
+{
+    int exNo, No, Num;
+    double zhong;
+    cin >> exNo >> No >> Num >> zhong;
+    Expresscom* ex;
+    switch (exNo)
+    {    
+    case 1:
+        ex = new ETongBao(No, Num, zhong);
+        break;
+    case 2:
+        ex = new Shunfeng(No, Num, zhong);
+        break; 
+    case 3:
+        ex = new EMS(No, Num, zhong);
+        break;
+    case 4:
+        ex = new Yuantong(No, Num, zhong);
+        break;
+    }
+    ex->Disp();
+    delete ex;
+    return 0;
+}
