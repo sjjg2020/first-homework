@@ -1,0 +1,13 @@
+#include<iostream> 
+using namespace std;
+class apple
+{
+	public:
+		char zuobiao();
+		void putapple();
+		void suijifangzhi();		
+		int ipad,iphone;
+	    apple (wall&tempwall);
+	    Wall&wall;
+	  
+};
