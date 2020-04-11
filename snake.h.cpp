@@ -1,14 +1,12 @@
 #include <iostream>
+#include"wall.h"
+#include"food.h"
 using namespace std;
-struct Point//每个节点对应每一身段
+const defaultSize=100;
+struct Point
 {
     int x;
     int y;
-    
-    Point *link;//指向下一个节点（也就是靠近蛇尾的一段）
-    
-    Point(Point *ptr=NULL):link(ptr){};
-    Point(int x,int y,Point *ptr=NULL):x(x),y(y),link(ptr){};
 };
 enum//设定按键与蛇移动方向的对应关系
 {
@@ -20,17 +18,18 @@ enum//设定按键与蛇移动方向的对应关系
 class Snake
 {
 public:
-    Snake() {first=new Point;length=0;}
-    Snake(const int &x,const int &y) {first=new Point(x,y);}//这个需要修改，直接用一个初始化函数代替；
-    Snake(Snake &s);
+    Snake(int sz=defaultSize);
     ~Snake();
-    
-    bool Insert(int i,int &x,int &y);//插入新身段，用于蛇移动或者蛇吃东西
-    bool Remove(int i,int &x,int &y);//删除身段，用于蛇移动或者其他原因导致蛇身变短
+    bool InitSnake();
     bool Death();//等有了wall，参数表里加入wall的引用
     bool Eat();
-    bool Move();//里面实现蛇头的移动，身子的跟进等等，现在可能和eat还有点冲突，丞待解决
+    bool Move(char direction);
+    int getLength() {return length;}
+    wall &m_wall;
+    apple &m_apple;
 protected:
-    Point *first;
-    int length;
+    Point *head;//指向蛇头
+    int length;//蛇的长度
+    int maxSize;//蛇的最大长度
 };
+//用数组实现
