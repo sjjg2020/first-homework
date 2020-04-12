@@ -29,7 +29,7 @@ public:
     wall &m_wall;
     apple &m_apple;
 protected:
-    Point *head;//指向蛇头
+    Point *Head;//指向蛇头
     int length;//蛇的长度
     int maxSize;//蛇的最大长度
 };
