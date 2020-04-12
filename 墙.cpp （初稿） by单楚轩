@@ -28,6 +28,7 @@ void Wall::putwall()
 	{
 		for (int j = 0; j < Col    ; ++j)
 		{
+			//画的时候多加一个空格，看起来好看一些
 			cout << wall[i][j] << " ";
 		}
 		if (i == 5)
@@ -54,9 +55,9 @@ void Wall::putwall()
 	}	 
 }
 
-int * Wall::Getdata() 
+char Wall::Getdata(int a, int b) 
 {
-	return wallxy;	
+	return wall[a][b];	
 }
 
 void Wall::wallchange(int a, int b,char c)
