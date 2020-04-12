@@ -2,13 +2,13 @@
 #include"wall.h"
 #include"food.h"
 using namespace std;
-const defaultSize=100;
+const int defaultSize=100;
 struct Point
 {
     int x;
     int y;
 };
-enum//è®¾å®šæŒ‰é”®ä¸è›‡ç§»åŠ¨æ–¹å‘çš„å¯¹åº”å…³ç³»
+enum//Éè¶¨°´¼üÓëÉßÒÆ¶¯·½ÏòµÄ¶ÔÓ¦¹ØÏµ
 {
     Up='w',
     Down='s',
@@ -21,16 +21,16 @@ public:
     Snake(int sz=defaultSize);
     ~Snake();
     bool InitSnake();
-    bool Death();//ç­‰æœ‰äº†wallï¼Œå‚æ•°è¡¨é‡ŒåŠ å…¥wallçš„å¼•ç”¨
+    bool Death();//µÈÓĞÁËwall£¬²ÎÊı±íÀï¼ÓÈëwallµÄÒıÓÃ
     bool Eat();
     bool Move(char pre_direction,char cur_direction);
-    bool Crawl(char pre_direction,char cur_direction);//å®ç°ä¸åŒéš¾åº¦ä¹‹ä¸‹ï¼Œmoveï¼Œdeathï¼Œeatå‡½æ•°çš„è°ƒé…
+    bool Crawl(char pre_direction,char cur_direction);//ÊµÏÖ²»Í¬ÄÑ¶ÈÖ®ÏÂ£¬move£¬death£¬eatº¯ÊıµÄµ÷Åä
     int getLength() {return length;}
     wall &m_wall;
     apple &m_apple;
 protected:
-    Point *head;//æŒ‡å‘è›‡å¤´
-    int length;//è›‡çš„é•¿åº¦
-    int maxSize;//è›‡çš„æœ€å¤§é•¿åº¦
+    Point *Head;//Ö¸ÏòÉßÍ·
+    int length;//ÉßµÄ³¤¶È
+    int maxSize;//ÉßµÄ×î´ó³¤¶È
 };
-//ç”¨æ•°ç»„å®ç°
+//ÓÃÊı×éÊµÏÖ

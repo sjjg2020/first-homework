@@ -10,21 +10,21 @@ Snake::Snake(Wall &tempWall,Apple &apple,int sz):m_wall(tempWall),m_apple(apple)
 }
 Snake::~Snake()
 {delete [] Head;}
-bool Snake::InitSnake()//æ— è®ºæ˜¯æ¸¸æˆç¬¬ä¸€æ¬¡å¼€å§‹è¿˜æ˜¯é‡æ–°å¼€å§‹ï¼Œå°†è›‡åˆå§‹åŒ–ï¼ˆå¤ä½ï¼‰
+bool Snake::InitSnake()//ÎŞÂÛÊÇÓÎÏ·µÚÒ»´Î¿ªÊ¼»¹ÊÇÖØĞÂ¿ªÊ¼£¬½«Éß³õÊ¼»¯£¨¸´Î»£©
 {
     if (Head==NULL){
         Head=new Point[maxSize];
         if (Head==NULL)
-        {cerr<<""<<endl;exit(1);}}//å¦‚æœç¬¬ä¸€æ¬¡å¼€å§‹åˆ™è›‡å¤´æŒ‡é’ˆä¸ºç©ºï¼Œåˆ†é…ç©ºé—´ï¼›åˆ†é…ç©ºé—´å¤±è´¥åˆ™æŠ¥é”™
+        {cerr<<""<<endl;exit(1);}}//Èç¹ûµÚÒ»´Î¿ªÊ¼ÔòÉßÍ·Ö¸ÕëÎª¿Õ£¬·ÖÅä¿Õ¼ä£»·ÖÅä¿Õ¼äÊ§°ÜÔò±¨´í
     else
         for (int i=0;i<maxSize;i++)
-            Head[i].x=Head[i].y=0;//å¦‚æœæ˜¯é‡æ–°å¼€å§‹æ¸¸æˆï¼Œåˆ™æŠŠè›‡èº«å…¨éƒ¨å¤ä½ä¸º0
+            Head[i].x=Head[i].y=0;//Èç¹ûÊÇÖØĞÂ¿ªÊ¼ÓÎÏ·£¬Ôò°ÑÉßÉíÈ«²¿¸´Î»Îª0
     Head[0].x=Head[1].x=Head[2].x=5;
     Head[0].y=5;Head[1].y=6;Head[2].y=7;
-    length=3;                    //åˆå§‹è®¾å®šè›‡æœ‰ä¸‰æ®µï¼Œè›‡å¤´åæ ‡ï¼ˆ5ï¼Œ5ï¼‰ï¼Œè›‡èº«ï¼ˆ5ï¼Œ6ï¼‰å’Œï¼ˆ5ï¼Œ7ï¼‰
-    return true;                 //æˆåŠŸè¿”å›trueï¼Œä»è€Œè¿›è¡Œä¸‹ä¸€æ¬¡æ“ä½œï¼Œè¿˜æ²¡æƒ³å¥½ä»€ä¹ˆæƒ…å†µä¸‹è¿”å›false
+    length=3;//³õÊ¼Éè¶¨ÉßÓĞÈı¶Î£¬ÉßÍ·×ø±ê£¨5£¬5£©£¬ÉßÉí£¨5£¬6£©ºÍ£¨5£¬7£©                    
+    return true; //³É¹¦·µ»Øtrue£¬´Ó¶ø½øĞĞÏÂÒ»´Î²Ù×÷£¬»¹Ã»ÏëºÃÊ²Ã´Çé¿öÏÂ·µ»Øfalse                 
 }
-bool Snake::Move(char pre_direction,char cur_direction)//æ§åˆ¶è›‡æœ€åŸºæœ¬çš„ç§»åŠ¨
+bool Snake::Move(char pre_direction,char cur_direction)//¿ØÖÆÉß×î»ù±¾µÄÒÆ¶¯
 {
     int x=Head[0].x,y=Head[0].y;
     char direction;
@@ -45,10 +45,35 @@ bool Snake::Move(char pre_direction,char cur_direction)//æ§åˆ¶è›‡æœ€åŸºæœ¬çš„ç§
             break;
         default:
             break;
-    }                           //ä»¥ä¸Šå†…å®¹ï¼Œè·å–å¹¶æ›´æ–°äº†è›‡å¤´åæ ‡
+    }                  //ÒÔÉÏÄÚÈİ£¬»ñÈ¡²¢¸üĞÂÁËÉßÍ·×ø±ê          
     for (int i=getLength()-1;i>0;i--)
         Head[i]=Head[i-1];
     Head[0].x=x;
-    Head[0].y=y;//å®ç°è›‡çš„è •åŠ¨
+    Head[0].y=y;//ÊµÏÖÉßµÄÈä¶¯
     return true;
 }
+bool Snake::Eat()
+{
+	int x=Head[0].x,y=Head[0].y;
+	int i=getLength();
+	if(x==7&&y==8){
+	     length++;
+		 if(Head[i-1].x==Head[i-2].x&&Head[i-1].y<Head[i-2].y){Head[length-1].x=Head[i-1].x;Head[length-1].y=Head[i-1].y-1;}
+		 else if(Head[i-1].x==Head[i-2].x&&Head[i-1].y>Head[i-2].y){Head[length-1].x=Head[i-1].x;Head[length-1].y=Head[i-1].y+1;}
+		 else if(Head[i-1].x<Head[i-2].x&&Head[i-1].y==Head[i-2].y){Head[length-1].x=Head[i-1].x-1;Head[length-1].y=Head[i-1].y;}
+		 else if(Head[i-1].x>Head[i-2].x&&Head[i-1].y==Head[i-2].y){Head[length-1].x=Head[i-1].x+1;Head[length-1].y=Head[i-1].y;}
+	}
+	return true; 
+ }
+bool Snake::Death()
+{
+	int x=Head[0].x,y=Head[0].y;
+	int i=getLength();
+	int k;
+	for(k=4;k<=i-1;k++){
+		if(x==Head[k].x&&y==Head[k].y){cout<<"Game Over"<<endl;return false;}
+	}
+	if(x==1||x==7||y==1||y==7){cout<<"Game Over"<<endl;return false;}
+	return true;
+}
+ 
