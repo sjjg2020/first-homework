@@ -23,7 +23,7 @@ public:
     bool InitSnake();
     bool Death();//等有了wall，参数表里加入wall的引用
     bool Eat();
-    bool Move(char direction);
+    bool Move(char pre_direction,char cur_direction);
     int getLength() {return length;}
     wall &m_wall;
     apple &m_apple;

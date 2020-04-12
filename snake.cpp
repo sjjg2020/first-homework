@@ -24,9 +24,16 @@ bool Snake::InitSnake()//无论是游戏第一次开始还是重新开始，将�
     length=3;                    //初始设定蛇有三段，蛇头坐标（5，5），蛇身（5，6）和（5，7）
     return true;                 //成功返回true，从而进行下一次操作，还没想好什么情况下返回false
 }
-bool Snake::Move(char direction)//控制蛇最基本的移动
+bool Snake::Move(char pre_direction,char cur_direction)//控制蛇最基本的移动
 {
     int x=Head[0].x,y=Head[0].y;
+    char direction;
+    if ((pre_direction==Left&&cur_direction==Right)||
+        (pre_direction==Right&&cur_direction==Left)||
+        (pre_direction==Up&&cur_direction==Down)||
+        (pre_direction==Down&&cur_direction==Up))
+         direction=pre_direction;
+    else direction=cur_direction;
     switch (direction) {
         case Up:    y++;
             break;
