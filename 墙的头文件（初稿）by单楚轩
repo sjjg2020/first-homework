@@ -1,6 +1,6 @@
 #include<iostream> 
 using namespace std;
-class wall
+class Wall
 {public:
 	void newwall();//新一局的墙 
 	void getrl(int a,int b);//获得长和宽（可以变成难度） 
@@ -9,7 +9,7 @@ class wall
 	void Getdata();//放置障碍不能在蛇或者果子上
 	 
 private:
-    int Row;
+        int Row;
 	int Col;	
 	char wall[Row][Col];//所含字符 
 }; 
