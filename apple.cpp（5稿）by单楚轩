@@ -11,12 +11,12 @@ void gotoxy2(HANDLE hOut2, int x, int y)
 }
 HANDLE hOut2 = GetStdHandle(STD_OUTPUT_HANDLE);//定义显示器句柄变量
 
-apple::apple(Wall &tempwall) :wall1(tempwall)
+Apple::Apple(Wall &tempwall) :wall1(tempwall)
 {
 
 }
 
-void apple::suijifangzhi()
+void Apple::suijifangzhi()
 {
 
 	while (true)
