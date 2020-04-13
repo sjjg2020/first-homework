@@ -1,12 +1,11 @@
 #include<iostream>
 #include"wall.h" 
 using namespace std;
-
 void Wall::newwall()
 {
 	for (int i = 0; i < Row; i++)
 	{
-		for (int j = 0; j < Col; j++)
+		for (int j = 0; j <  Col; j++)
 		{
 			//放墙壁的地方
 			if (i == 0 || j == 0 || i == Row - 1 || j == Col - 1)
@@ -26,9 +25,8 @@ void Wall::putwall()
 {
 	for (int i = 0; i < Row; ++i)
 	{
-		for (int j = 0; j < Col    ; ++j)
+		for (int j = 0; j < Col; ++j)
 		{
-			//画的时候多加一个空格，看起来好看一些
 			cout << wall[i][j] << " ";
 		}
 		if (i == 5)
