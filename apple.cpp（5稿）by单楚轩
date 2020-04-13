@@ -1,15 +1,17 @@
- #include"apple.h"
+#include"apple.h"
 #include<Windows.h>
+using namespace std;
+
 void gotoxy2(HANDLE hOut2, int x, int y)
 {
-	COORD pos;
+	COORD pos;//字符坐标 
 	pos.X = x; //横坐标
 	pos.Y = y; //纵坐标
 	SetConsoleCursorPosition(hOut2, pos);
 }
 HANDLE hOut2 = GetStdHandle(STD_OUTPUT_HANDLE);//定义显示器句柄变量
 
-apple::apple(Wall &tempwall) :wall(tempwall)
+apple::apple(Wall &tempwall) :wall1(tempwall)
 {
 
 }
@@ -22,10 +24,10 @@ void apple::suijifangzhi()
 		ix = rand() % (Wall::Row - 2) + 1;
 		iy = rand() % (Wall::Col - 2) + 1;
 		//如果随机的位置是蛇头或蛇身，就重新生成随机数
-		if (wall.Getdata(ix, iy) == ' ')
+		if (wall1.Getdata(ix, iy) == ' ')
 		{
-			wall.wallchange(ix, iy,'*');//改变墙 
-			gotoxy2(hOut2, iy * 2, ix);//获得果子位置 
+			wall1.wallchange(ix, iy,'*');//改变墙 
+			gotoxy2(hOut2, iy * 2, ix);//获得果子位置 ，定位光标 
 			cout << '*';
 			break;
 		}
