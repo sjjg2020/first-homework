@@ -1,0 +1,14 @@
+#include<iostream> 
+#include"wall.h"
+#include"snake.h"
+using namespace std;
+class apple
+{
+	public:
+		char appxy();// 获得果子坐标 
+		void suijifangzhi();//随机函数放置		
+		int ix,iy;// 果子的坐标 
+	    apple (Wall&tempwall);//初始化 
+	    Wall &wall;	
+		Snake &snake;  
+};

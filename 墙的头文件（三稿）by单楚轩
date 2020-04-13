@@ -1,0 +1,17 @@
+#include<iostream> 
+using namespace std;
+class Wall
+{public:
+	void newwall();//刷新 
+	void putwall();//输出 
+	char Getdata(int a, int b);//获得墙的坐标
+	void wallchange(int a,int b,char c); 
+	char Newwall();//随时间形成的新的障碍 （新） 
+	void difficulty(int a) ;//难度设置 (新) 
+	static const int Row=30;
+    static const int Col=30;
+	 
+private:
+	int wallxy[2]={Row,Col};	
+	char wall[Row][Col];//所含字符 
+}; 
