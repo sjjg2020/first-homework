@@ -1,7 +1,7 @@
 #include <iostream>
-#inlcude <time.h>
+#include <time.h>
 #include"wall.h"
-#include"food.h"
+#include"apple.h"
 #include"snake.h"
 using namespace std;
 Snake::Snake(Wall &tempWall,Apple &apple,int sz):m_wall(tempWall),m_apple(apple)
@@ -10,23 +10,23 @@ Snake::Snake(Wall &tempWall,Apple &apple,int sz):m_wall(tempWall),m_apple(apple)
 }
 Snake::~Snake()
 {delete [] Head;}
-bool Snake::InitSnake()//ÎŞÂÛÊÇÓÎÏ·µÚÒ»´Î¿ªÊ¼»¹ÊÇÖØĞÂ¿ªÊ¼£¬½«Éß³õÊ¼»¯£¨¸´Î»£©
+bool Snake::InitSnake()//æ— è®ºæ˜¯æ¸¸æˆç¬¬ä¸€æ¬¡å¼€å§‹è¿˜æ˜¯é‡æ–°å¼€å§‹ï¼Œå°†è›‡åˆå§‹åŒ–ï¼ˆå¤ä½ï¼‰
 {
     if (Head==NULL){
         Head=new Point[maxSize];
         if (Head==NULL)
-        {cerr<<""<<endl;exit(1);}}//Èç¹ûµÚÒ»´Î¿ªÊ¼ÔòÉßÍ·Ö¸ÕëÎª¿Õ£¬·ÖÅä¿Õ¼ä£»·ÖÅä¿Õ¼äÊ§°ÜÔò±¨´í
+        {cerr<<""<<endl;exit(1);}}//å¦‚æœç¬¬ä¸€æ¬¡å¼€å§‹åˆ™è›‡å¤´æŒ‡é’ˆä¸ºç©ºï¼Œåˆ†é…ç©ºé—´ï¼›åˆ†é…ç©ºé—´å¤±è´¥åˆ™æŠ¥é”™
     else
         for (int i=0;i<maxSize;i++)
-            Head[i].x=Head[i].y=0;//Èç¹ûÊÇÖØĞÂ¿ªÊ¼ÓÎÏ·£¬Ôò°ÑÉßÉíÈ«²¿¸´Î»Îª0
+            Head[i].x=Head[i].y=0;//å¦‚æœæ˜¯é‡æ–°å¼€å§‹æ¸¸æˆï¼Œåˆ™æŠŠè›‡èº«å…¨éƒ¨å¤ä½ä¸º0
     Head[0].x=Head[1].x=Head[2].x=5;
     Head[0].y=5;Head[1].y=6;Head[2].y=7;
-    length=3;//³õÊ¼Éè¶¨ÉßÓĞÈı¶Î£¬ÉßÍ·×ø±ê£¨5£¬5£©£¬ÉßÉí£¨5£¬6£©ºÍ£¨5£¬7£©  
+    length=3;//åˆå§‹è®¾å®šè›‡æœ‰ä¸‰æ®µï¼Œè›‡å¤´åæ ‡ï¼ˆ5ï¼Œ5ï¼‰ï¼Œè›‡èº«ï¼ˆ5ï¼Œ6ï¼‰å’Œï¼ˆ5ï¼Œ7ï¼‰  
 	tailx=0;
 	taily=0;                  
-    return true; //³É¹¦·µ»Øtrue£¬´Ó¶ø½øĞĞÏÂÒ»´Î²Ù×÷£¬»¹Ã»ÏëºÃÊ²Ã´Çé¿öÏÂ·µ»Øfalse                 
+    return true; //æˆåŠŸè¿”å›trueï¼Œä»è€Œè¿›è¡Œä¸‹ä¸€æ¬¡æ“ä½œï¼Œè¿˜æ²¡æƒ³å¥½ä»€ä¹ˆæƒ…å†µä¸‹è¿”å›false                 
 }
-bool Snake::Move(char pre_direction,char cur_direction)//¿ØÖÆÉß×î»ù±¾µÄÒÆ¶¯
+bool Snake::Move(char pre_direction,char cur_direction)//æ§åˆ¶è›‡æœ€åŸºæœ¬çš„ç§»åŠ¨
 {
     int x=Head[0].x,y=Head[0].y;
     char direction;
@@ -47,11 +47,11 @@ bool Snake::Move(char pre_direction,char cur_direction)//¿ØÖÆÉß×î»ù±¾µÄÒÆ¶¯
             break;
         default:
             break;
-    }                  //ÒÔÉÏÄÚÈİ£¬»ñÈ¡²¢¸üĞÂÁËÉßÍ·×ø±ê          
+    }                  //ä»¥ä¸Šå†…å®¹ï¼Œè·å–å¹¶æ›´æ–°äº†è›‡å¤´åæ ‡          
     for (int i=getLength()-1;i>0;i--)
         Head[i]=Head[i-1];
     Head[0].x=x;
-    Head[0].y=y;//ÊµÏÖÉßµÄÈä¶¯
+    Head[0].y=y;//å®ç°è›‡çš„è •åŠ¨
     return true;
 }
 bool Snake::Eat()
