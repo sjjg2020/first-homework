@@ -21,7 +21,9 @@ bool Snake::InitSnake()//无论是游戏第一次开始还是重新开始，将蛇初始化（复位）
             Head[i].x=Head[i].y=0;//如果是重新开始游戏，则把蛇身全部复位为0
     Head[0].x=Head[1].x=Head[2].x=5;
     Head[0].y=5;Head[1].y=6;Head[2].y=7;
-    length=3;//初始设定蛇有三段，蛇头坐标（5，5），蛇身（5，6）和（5，7）                    
+    length=3;//初始设定蛇有三段，蛇头坐标（5，5），蛇身（5，6）和（5，7）  
+	tailx=0;
+	taily=0;                  
     return true; //成功返回true，从而进行下一次操作，还没想好什么情况下返回false                 
 }
 bool Snake::Move(char pre_direction,char cur_direction)//控制蛇最基本的移动
@@ -55,14 +57,13 @@ bool Snake::Move(char pre_direction,char cur_direction)//控制蛇最基本的移动
 bool Snake::Eat()
 {
 	int x=Head[0].x,y=Head[0].y;
-	int i=getLength();
-	if(x==7&&y==8){
+	if(x==8&&y==5){
 	     length++;
-		 if(Head[i-1].x==Head[i-2].x&&Head[i-1].y<Head[i-2].y){Head[length-1].x=Head[i-1].x;Head[length-1].y=Head[i-1].y-1;}
-		 else if(Head[i-1].x==Head[i-2].x&&Head[i-1].y>Head[i-2].y){Head[length-1].x=Head[i-1].x;Head[length-1].y=Head[i-1].y+1;}
-		 else if(Head[i-1].x<Head[i-2].x&&Head[i-1].y==Head[i-2].y){Head[length-1].x=Head[i-1].x-1;Head[length-1].y=Head[i-1].y;}
-		 else if(Head[i-1].x>Head[i-2].x&&Head[i-1].y==Head[i-2].y){Head[length-1].x=Head[i-1].x+1;Head[length-1].y=Head[i-1].y;}
+	     if(length==4&&Head[2].x==5&&Head[2].y==6){Head[3].x=5;Head[3].y=7;}
+		 else{Head[length-1].x=tailx;Head[length-1].y=taily;}
 	}
+	tailx=Head[length-1].x;
+	taily=Head[length-1].y;
 	return true; 
  }
 bool Snake::Death()
@@ -73,7 +74,6 @@ bool Snake::Death()
 	for(k=4;k<=i-1;k++){
 		if(x==Head[k].x&&y==Head[k].y){cout<<"Game Over"<<endl;return false;}
 	}
-	if(x==1||x==7||y==1||y==7){cout<<"Game Over"<<endl;return false;}
+	if(x==1||x==10||y==1||y==10){cout<<"Game Over"<<endl;return false;}
 	return true;
 }
- 

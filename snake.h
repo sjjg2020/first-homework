@@ -32,5 +32,7 @@ protected:
     Point *Head;//指向蛇头
     int length;//蛇的长度
     int maxSize;//蛇的最大长度
+    int tailx;
+	int taily;
 };
 //用数组实现
