@@ -1,7 +1,7 @@
+#pragma once
 #include<iostream> 
-#include"wall.h"
-#include"snake.h"
 using namespace std;
+#include"wall.h"
 class apple
 {
 	public:
@@ -9,6 +9,6 @@ class apple
 		void suijifangzhi();//随机函数放置		
 		int ix,iy;// 果子的坐标 
 	    apple (Wall&tempwall);//初始化 
-	    Wall &wall;	
-		Snake &snake;  
+	    Wall &wall1;	
+
 };
