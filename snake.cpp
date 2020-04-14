@@ -1,15 +1,28 @@
 #include <iostream>
 #include <time.h>
+#include <Windows.h>
 #include"wall.h"
 #include"apple.h"
 #include"snake.h"
 using namespace std;
+void gotoxy1(HANDLE hOut1, int x, int y)
+{
+    COORD pos;
+    pos.X = x; //横坐标
+    pos.Y = y; //纵坐标
+    SetConsoleCursorPosition(hOut1, pos);
+}
+
+HANDLE hOut1 = GetStdHandle(STD_OUTPUT_HANDLE);//定义显示器句柄变量
+
 Snake::Snake(Wall &tempWall,Apple &apple,int sz):m_wall(tempWall),m_apple(apple)
 {
     length=0;maxSize=sz;Head=NULL;
 }
+
 Snake::~Snake()
 {delete [] Head;}
+
 bool Snake::InitSnake()//无论是游戏第一次开始还是重新开始，将蛇初始化（复位）
 {
     if (Head==NULL){
@@ -26,6 +39,7 @@ bool Snake::InitSnake()//无论是游戏第一次开始还是重新开始，将�
 	taily=0;                  
     return true; //成功返回true，从而进行下一次操作，还没想好什么情况下返回false                 
 }
+
 bool Snake::Move(char pre_direction,char cur_direction)//控制蛇最基本的移动
 {
     int x=Head[0].x,y=Head[0].y;
@@ -54,6 +68,7 @@ bool Snake::Move(char pre_direction,char cur_direction)//控制蛇最基本的�
     Head[0].y=y;//实现蛇的蠕动
     return true;
 }
+
 bool Snake::Eat()
 {
 	int x=Head[0].x,y=Head[0].y;
@@ -66,6 +81,7 @@ bool Snake::Eat()
 	taily=Head[length-1].y;
 	return true; 
  }
+
 bool Snake::Death()
 {
 	int x=Head[0].x,y=Head[0].y;
