@@ -1,15 +1,1 @@
-#pragma once
-#include<iostream> 
-using namespace std;
-#include"wall.h"
-class Apple
-{
-	public:
-		char appxy();// 获得果子坐标 
-		void suijifangzhi();//随机函数放置		
-		
-	    Apple (Wall&tempwall);//初始化 
-	    Wall &wall1;
-	protected:	
-               int ix,iy;// 果子的坐标 
-};
+
