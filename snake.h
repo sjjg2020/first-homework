@@ -21,7 +21,7 @@ public:
     Snake(int sz=defaultSize);
     ~Snake();
     bool InitSnake();
-    bool Death();//等有了wall，参数表里加入wall的引用
+    bool Death();
     bool Eat();
     bool Move(char pre_direction,char cur_direction);
     bool Crawl(char pre_direction,char cur_direction);//实现不同难度之下，move，death，eat函数的调配
