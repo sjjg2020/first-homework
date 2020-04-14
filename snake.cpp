@@ -72,7 +72,7 @@ bool Snake::Move(char pre_direction,char cur_direction)//控制蛇最基本的�
 bool Snake::Eat()
 {
 	int x=Head[0].x,y=Head[0].y;
-	if(x==ix&&y==iy){
+    if(x==m_apple.ix&&y==m_apple.iy){
 	     length++;
 	     if(length==4&&Head[2].x==5&&Head[2].y==6){Head[3].x=5;Head[3].y=7;}
 		 else{Head[length-1].x=tailx;Head[length-1].y=taily;}
