@@ -27,7 +27,7 @@ public:
     bool Death();//等有了wall，参数表里加入wall的引用
     bool Eat();
     bool Move(char pre_direction,char cur_direction);
-    bool Crawl(char pre_direction,char cur_direction);//实现不同难度之下，move，death，eat函数的调配
+    //bool Crawl(char pre_direction,char cur_direction);//实现不同难度之下，move，death，eat函数的调配
     int getLength() {return length;}
     Point *GetHead() {return Head;}
     //Wall &m_wall;
