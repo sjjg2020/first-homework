@@ -25,7 +25,7 @@ int main(){
 	Snake s(thewall,apple,defaultSize);//蛇定义
 	Point* p;//蛇头节点
 	char pre_direction, cur_direction;
-	s.InitSnake();//初始化
+	s.InitSnake(v,5,5);//初始化
 	pre_direction = 's';//方向初始化
 	//Sleep(1000);
 	p = s.GetHead();//得到蛇头

@@ -23,7 +23,7 @@ public:
    // Snake(int sz=defaultSize) {Head=NULL;maxSize=defaultSize;}//用于调试
     Snake(Wall &tempWall, Apple &apple,int sz);//正式版
      ~Snake();
-    bool InitSnake();
+    void InitSnake(char head_direction,int x,int y);
     bool Death();//等有了wall，参数表里加入wall的引用
     bool Eat();
     bool Move(char &pre_direction,char &cur_direction);
