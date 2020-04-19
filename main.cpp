@@ -43,7 +43,7 @@ int main(){
 		draw(apple.ix, apple.iy);
 		for (int i = 0; i < len; i++)
 			draw(p[i].x, p[i].y);//»­Éß
-        Sleep(s.SleepTime);
+        Sleep(s.SleepTime(level));
        cleardevice();//ÇåÆÁ
 			cur_direction =char(_getch());
 		s.Move(pre_direction, cur_direction);

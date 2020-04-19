@@ -103,14 +103,26 @@ bool Snake::Death()
     return false;
 }
 
-int Snake::SleepTime()
+int Snake::SleepTime(int level)
 {
     int sleeptime;
-    if (length<15)
-        sleeptime=300;
-    else if (length<40)
-        sleeptime=250;
+    if (level==1)
+    {
+        if (length<15)      sleeptime=400;
+        else if (length<40) sleeptime=300;
+        else                sleeptime=150;
+    }
+    else if (level==2)
+    {
+        if (length<15)      sleeptime=300;
+        else if (length<30) sleeptime=250;
+        else                sleeptime=150;
+    }
     else
-        sleeptime=150;
+    {
+        if (length<10)      sleeptime=250;
+        else if (length<30) sleeptime=200;
+        else                sleeptime=100;
+    }
     return sleeptime;
 }
