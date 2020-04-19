@@ -28,6 +28,7 @@ public:
     bool Eat();
     bool Move(char &pre_direction,char &cur_direction);
     //bool Crawl(char pre_direction,char cur_direction);//实现不同难度之下，move，death，eat函数的调配
+    int SleepTime();
     int getLength() {return length;}
     Point *GetHead() {return Head;}
    Wall & m_wall;

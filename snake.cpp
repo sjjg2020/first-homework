@@ -102,3 +102,15 @@ bool Snake::Death()
     if (x == 0 || x == boux || y == 0 || y == bouy) { cout << "Game Over" << endl; return true; }
     return false;
 }
+
+int Snake::SleepTime()
+{
+    int sleeptime;
+    if (length<15)
+        sleeptime=300;
+    else if (length<40)
+        sleeptime=250;
+    else
+        sleeptime=150;
+    return sleeptime;
+}
