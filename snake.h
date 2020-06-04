@@ -12,10 +12,14 @@ struct Point
 };
 enum//设定按键与蛇移动方向的对应关系
 {
-    Up='w',
-    Down='s',
-    Right='d',
-    Left='a'
+    UP = 'w',
+    Up = 'i',
+    DOWN = 's',
+    Down ='k',
+    RIGHT = 'd',
+    Right = 'l',
+    LEFT = 'a',
+    Left ='j'
 };
 class Snake
 {
@@ -23,12 +27,13 @@ public:
    // Snake(int sz=defaultSize) {Head=NULL;maxSize=defaultSize;}//用于调试
     Snake(Wall &tempWall, Apple &apple,int sz);//正式版
      ~Snake();
-    void InitSnake(char head_direction,int x,int y);
-    bool Death();//等有了wall，参数表里加入wall的引用
+    void InitSnake(char , int , int );
+    bool Death();
+    bool Death(Snake& );
     bool Eat();
     bool Move(char &pre_direction,char &cur_direction);
     //bool Crawl(char pre_direction,char cur_direction);//实现不同难度之下，move，death，eat函数的调配
-    int SleepTime(int level);
+    friend int Win(Snake& , Snake&);
     int getLength() {return length;}
     Point *GetHead() {return Head;}
    Wall & m_wall;
