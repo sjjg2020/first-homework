@@ -48,6 +48,10 @@ void Snake::InitSnake(char head_direction, int x, int y)//æ— è®ºæ˜¯æ¸¸æˆç¬¬ä¸€æ
     length = 3;//åˆå§‹è®¾å®šè›‡æœ‰ä¸‰æ®µï¼Œè›‡å¤´åæ ‡ï¼ˆ5ï¼Œ5ï¼‰ï¼Œè›‡èº«ï¼ˆ5ï¼Œ6ï¼‰å’Œï¼ˆ5ï¼Œ7ï¼‰  
     tailx = x;
     taily = y;
+<<<<<<< HEAD
+=======
+    return true;//æˆåŠŸè¿”å›trueï¼Œä»è€Œè¿›è¡Œä¸‹ä¸€æ¬¡æ“ä½œï¼Œè¿˜æ²¡æƒ³å¥½ä»€ä¹ˆæƒ…å†µä¸‹è¿”å›false
+>>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
 }
 
 void Snake::AddMaxsize()//å¢åŠ è›‡èº«æœ€å¤§é•¿åº¦
@@ -104,29 +108,37 @@ void Snake::Move(char& pre_direction, char& cur_direction)//è›‡çš„çˆ¬è¡Œå‡½æ•°ï¼
 bool Snake::Eat()
 {
     int x = Head[0].x, y = Head[0].y;
+<<<<<<< HEAD
     if (length==maxSize)//å¦‚æœå·²è¾¾åˆ°æœ€é•¿ï¼Œåˆ™è°ƒç”¨å¢åŠ è›‡é•¿å‡½æ•°
         AddMaxsize();
     if (x == m_apple.ix && y == m_apple.iy)
+=======
+    if (x == m_apple.ix && y == m_apple.iy)//³Ôµ½¹û×Ó 
+>>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
     {
-        //if(x==m_apple.ix&&y==m_apple.iy){
+        if(x==m_apple.ix&&y==m_apple.iy){
         length++;
         if (length == 4 && Head[2].x == 5 && Head[2].y == 6)
         {
-            Head[3].x = 5; Head[3].y = 7;
+            Head[3].x = 5; Head[3].y = 7;//Èç¹ûÉßÔÚÒÆ¶¯µÄµÚÒ»²½¾Í³Ôµ½ÁË¹û×Ó£¬ÉßÎ²y×ø±êÖ±½Ó¼ÓÒ»¸öµ¥Î»³¤¶È 
         }
+<<<<<<< HEAD
         else
         {
             Head[length - 1].x = tailx;
             Head[length - 1].y = taily;
         }
+=======
+        else { Head[length - 1].x = tailx; Head[length - 1].y = taily; }//Èç¹û²»ÊÇµÚÒ»²½³Ôµ½¹û×Ó£¬ÉßÎ²×ø±ê±äÎª×îºóÒ»´ÎÒÆ¶¯Ö®Ç°µÄÉßÎ²×ø±ê 
+>>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
         tailx = Head[length - 1].x;
-        taily = Head[length - 1].y;
+        taily = Head[length - 1].y;//¸øÉßÎ²µÄ×ø±êÖØĞÂ¸³Öµ 
         return true;
     }
     else
     {
         tailx = Head[length - 1].x;
-        taily = Head[length - 1].y;
+        taily = Head[length - 1].y;//Ã»ÓĞ³Ôµ½¹û×Ó²»Ôö¼Ó³¤¶È£¬Ö»¸Ä±äÉßÎ²×ø±ê 
         return false;
     }
 }
@@ -139,6 +151,7 @@ bool Snake::Death()
     int i = getLength();
     int k;
     for (k = 4; k <= i - 1; k++) {
+<<<<<<< HEAD
         if (x == Head[k].x && y == Head[k].y)
         {
             cout << "Game Over" << endl;
@@ -150,6 +163,11 @@ bool Snake::Death()
         cout << "Game Over" << endl;
         return true;
     }
+=======
+        if (x == Head[k].x && y == Head[k].y) { cout << "Game Over" << endl; return true; }//Èç¹ûÉßÍ·×²µ½ÉßÉí£¬ÓÎÏ·½áÊø 
+    }
+    if (x == 4 || x == boux || y == 0 || y == bouy) { cout << "Game Over" << endl; return true; }//Èç¹ûÉßÍ·×²µ½Ç½£¬ÓÎÏ·½áÊø 
+>>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
     return false;
 }
 
@@ -162,12 +180,16 @@ bool Snake::Death(Snake& s)
     int s1_length = getLength(), s2_length = s.getLength();
     int k;
     for (k = 4; k <= s1_length - 1; k++) {
-        if (s1_x == Head[k].x && s1_y == Head[k].y)  return true;
-    }
-        if (s1_x == 0 || s1_x == boux || s1_y == 0 || s1_y == bouy)  return true;
+        if (s1_x == Head[k].x && s1_y == Head[k].y)  return true; //Èô¸ÃÉßÉßÍ·×²µ½×Ô¼º£¬¸ÃÉßËÀ 
+        if (s1_x == 0 || s1_x == boux || s1_y == 0 || s1_y == bouy)  return true;//Èô¸ÃÉßÉßÍ·×²Ç½£¬¸ÃÉßËÀ 
         for (k = 0; k <= s2_length - 1; k++) {
+<<<<<<< HEAD
             if (s1_x == s2[k].x && s1_y == s2[k].y) return true; 
+=======
+            if (s1_x == s2[k].x && s1_y == s2[k].y)  return true; //Èô¸ÃÉßÉßÍ·×²µ½ÁíÒ»ÌõÉß£¬¸ÃÉßËÀ 
+>>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
         }
+    }
     return false;
 }
 
@@ -179,6 +201,7 @@ int Win(Snake & s1, Snake & s2)//åŒè›‡æ¨¡å¼ä¸‹ï¼Œåˆ¤æ–­ä¸¤æ¡è›‡çš„è¾“èµ¢ï¼›ä¼
         return 0;
     else
     {
+<<<<<<< HEAD
         if (s1_death && s2_death)//å¦‚æœä¸¤æ¡è›‡åŒæ—¶æ­»äº¡ï¼Œåˆ™æ¯”è¾ƒè›‡èº«æ€»é•¿ï¼Œé•¿è€…è·èƒœï¼Œç­‰é•¿åˆ™å¹³æ‰‹
         {
             if (s1_length > s2_length) return 1;//ç©å®¶1è·èƒœ
@@ -192,3 +215,23 @@ int Win(Snake & s1, Snake & s2)//åŒè›‡æ¨¡å¼ä¸‹ï¼Œåˆ¤æ–­ä¸¤æ¡è›‡çš„è¾“èµ¢ï¼›ä¼
         }
     }
 }
+=======
+        bool s1_death = s1.Death(s2), s2_death = s2.Death(s2);
+        if (!s1_death && !s2_death)//Èç¹û¶¼Ã»ËÀ£¬ÓÎÏ·¼ÌĞø 
+            return 0;
+        else
+        {
+            if (s1_death && s2_death)
+            {
+                if (s1.getLength() > s2.getLength()) return 1;//Èç¹û1ºÅÉßÉßÉí³¤¶È´óÓÚ2ºÅÉß£¬Ôò1ºÅÉßÓ® 
+                else if (s1.getLength() < s2.getLength()) return 2;//Èç¹û2ºÅÉßÉßÉí³¤¶È´óÓÚ1ºÅÉß£¬Ôò2ºÅÉßÓ® 
+                else return 3;//Èç¹ûÉßÉí³¤¶ÈÏàµÈ£¬ÔòÆ½¾Ö 
+            }
+            else
+            {
+                if (s2_death) return 1;//Èç¹û2ºÅÉßËÀÍö£¬Ôò1ºÅÉßÓ® 
+                else return 2; 
+            }
+        }
+    }
+>>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
