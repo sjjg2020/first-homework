@@ -50,7 +50,6 @@ void Snake::InitSnake(char head_direction, int x, int y)//无论是游戏第一�
     taily = y;
 <<<<<<< HEAD
 =======
-    return true;//成功返回true，从而进行下一次操作，还没想好什么情况下返回false
 >>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
 }
 
