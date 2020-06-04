@@ -18,11 +18,11 @@ void draw(int x, int y,int z) {
 		setfillcolor(BLUE);
 		fillrectangle(x * 10, y * 10, (x + 1) * 10, (y + 1) * 10);
 	}
-}//»­
+}//ç”»
 void draw(int x, int y) {
 	setfillcolor(RED);
 	fillrectangle(x * 10, y * 10, (x + 1) * 10, (y + 1) * 10);
-}//»­
+}//ç”»
 struct Node
 {
 	char ch;
@@ -72,36 +72,36 @@ void Queue::DeQueue(char& x,int y,char z)
 int main(){
 	Queue Q;
 	string r;
-	initgraph(1240, 640);//»­²¼
-	setbkcolor(BLACK);//±³¾°É«
-	settextcolor(RGB(255, 255, 255));//×ÖÌåÑÕÉ«
-	settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
-	outtextxy(570, 270, _T("Ì°³ÔÉß"));
-	outtextxy(570, 470, _T("ÇëÊäÈëÇ½Ìå´óĞ¡1£¬2£¬3"));
-	outtextxy(570, 570, _T("µ¥ÈËÇëÊäÈë1£¬Ë«ÈËÇëÊäÈë2"));
+	initgraph(1240, 640);//ç”»å¸ƒ
+	setbkcolor(BLACK);//èƒŒæ™¯è‰²
+	settextcolor(RGB(255, 255, 255));//å­—ä½“é¢œè‰²
+	settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
+	outtextxy(570, 270, _T("è´ªåƒè›‡"));
+	outtextxy(570, 470, _T("è¯·è¾“å…¥å¢™ä½“å¤§å°1ï¼Œ2ï¼Œ3"));
+	outtextxy(570, 570, _T("å•äººè¯·è¾“å…¥1ï¼ŒåŒäººè¯·è¾“å…¥2"));
 	int level;
 	cin >> level;
-	Wall thewall(level);//wallÄÑ¶ÈµÈ¼¶ÊäÈë£¨Ôİ¶¨
+	Wall thewall(level);//walléš¾åº¦ç­‰çº§è¾“å…¥ï¼ˆæš‚å®š
 	Apple apple(thewall);
 	Snake s1(thewall, apple, defaultSize);
-	Snake s2(thewall, apple, defaultSize);//Éß¶¨Òå
+	Snake s2(thewall, apple, defaultSize);//è›‡å®šä¹‰
 	Point* p1;
-	Point* p2;//ÉßÍ·½Úµã
+	Point* p2;//è›‡å¤´èŠ‚ç‚¹
 	char pre_direction1, cur_direction1,pre_direction2, cur_direction2;
 	s1.InitSnake('v', 5, 5);
-	s2.InitSnake('v', 20, 5);//³õÊ¼»¯
+	s2.InitSnake('v', 20, 5);//åˆå§‹åŒ–
 	pre_direction1 = 's';
-	pre_direction2 = 'k';//·½Ïò³õÊ¼»¯
+	pre_direction2 = 'k';//æ–¹å‘åˆå§‹åŒ–
 	//Sleep(1000);
 	p1 = s1.GetHead();
-	p2 = s2.GetHead();//µÃµ½ÉßÍ·
+	p2 = s2.GetHead();//å¾—åˆ°è›‡å¤´
 	int a, b, i, len1, len2, len;
 	a = thewall.GetRow();
-	b = thewall.GetCol();//µÃµ½³¤¿í
+	b = thewall.GetCol();//å¾—åˆ°é•¿å®½
 	apple.suijifangzhi();
 	int jj,T=3;
 	cin >> jj;
-	if (jj == 1)//ÊäÈë Îªµ¥ÈËË«ÈË
+	if (jj == 1)//è¾“å…¥ ä¸ºå•äººåŒäºº
 	{
 		while (!s1.Death())
 		{
@@ -109,12 +109,12 @@ int main(){
 			setfillcolor(RED);
 			fillrectangle(0, 0, b * 10 + 10, a * 10 + 10);
 			setfillcolor(BLACK);
-			fillrectangle(10, 10, b * 10, a * 10);//±ß¿ò
+			fillrectangle(10, 10, b * 10, a * 10);//è¾¹æ¡†
 			draw(apple.ix, apple.iy);
 			for (int i = 0; i < len; i++)
-				draw(p1[i].x, p1[i].y);//»­Éß
+				draw(p1[i].x, p1[i].y);//ç”»è›‡
 			Sleep(170);
-			cleardevice();//ÇåÆÁ
+			cleardevice();//æ¸…å±
 			cur_direction1 = char(_getch());
 			s1.Move(pre_direction1, cur_direction1);
 			if (s1.Eat())
@@ -123,7 +123,7 @@ int main(){
 		outtextxy(470, 170, _T("Game over"));
 		outtextxy(470, 270, _T("socre:" ));
 		char s[5];
-		sprintf_s(s, "%d", len*100);//½«ÕûĞÎa×ª»»³É×Ö·û´®
+		sprintf_s(s, "%d", len*100);//å°†æ•´å½¢aè½¬æ¢æˆå­—ç¬¦ä¸²
 		outtextxy(600, 270, s);
 		Sleep(3000);
 	}
@@ -135,14 +135,14 @@ int main(){
 			setfillcolor(RED);
 			fillrectangle(0, 0, b * 10 + 10, a * 10 + 10);
 			setfillcolor(BLACK);
-			fillrectangle(10, 10, b * 10, a * 10);//±ß¿ò
+			fillrectangle(10, 10, b * 10, a * 10);//è¾¹æ¡†
 			draw(apple.ix, apple.iy);
 			for (int i = 0; i < len1; i++)
-				draw(p1[i].x, p1[i].y,1);//»­Éß
+				draw(p1[i].x, p1[i].y,1);//ç”»è›‡
 			for (int i = 0; i < len2; i++)
-				draw(p2[i].x, p2[i].y,2);//»­Éß
+				draw(p2[i].x, p2[i].y,2);//ç”»è›‡
 			Sleep(170);
-			cleardevice();//ÇåÆÁ
+			cleardevice();//æ¸…å±
 			i = 0;
 			char ru;
 			while (i < 2) {
@@ -158,9 +158,9 @@ int main(){
 				apple.suijifangzhi();
 
 		}
-		if( T == 1) outtextxy(570, 270, _T("1ºÅwin"));
-		if (T == 2) outtextxy(570, 270, _T("2ºÅwin"));
-		if (T == 3) outtextxy(570, 270, _T("Æ½"));
+		if( T == 1) outtextxy(570, 270, _T("1å·win"));
+		if (T == 2) outtextxy(570, 270, _T("2å·win"));
+		if (T == 3) outtextxy(570, 270, _T("å¹³"));
 		Sleep(3000);
 	}
 }
