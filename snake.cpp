@@ -6,32 +6,32 @@
 #include"snake.h"
 using namespace std;
 
-Snake::Snake(Wall &tempWall,Apple &apple,int sz):m_wall(tempWall),m_apple(apple)//æ„é€ ç©ºè›‡ã€ä¼ å…¥å¤–éƒ¨çš„å¢™å’Œæœå­
+Snake::Snake(Wall &tempWall,Apple &apple,int sz):m_wall(tempWall),m_apple(apple)//¹¹Ôì¿ÕÉß¡¢´«ÈëÍâ²¿µÄÇ½ºÍ¹û×Ó
 {
     length=0;
     maxSize=sz;
     Head=NULL;
 }
 
-Snake::~Snake()//å°†è›‡ææ„
+Snake::~Snake()//½«ÉßÎö¹¹
 {
     delete [] Head;
 }
 
-void Snake::InitSnake(char head_direction, int x, int y)//æ— è®ºæ˜¯æ¸¸æˆç¬¬ä¸€æ¬¡å¼€å§‹è¿˜æ˜¯é‡æ–°å¼€å§‹ï¼Œå°†è›‡åˆå§‹åŒ–ï¼ˆå¤ä½ï¼‰
+void Snake::InitSnake(char head_direction, int x, int y)//ÎŞÂÛÊÇÓÎÏ·µÚÒ»´Î¿ªÊ¼»¹ÊÇÖØĞÂ¿ªÊ¼£¬½«Éß³õÊ¼»¯£¨¸´Î»£©
 {
     if (Head == NULL)
     {
         Head = new Point[maxSize];
         if (Head == NULL)
         {
-            cerr << "å†…å­˜åˆ†é…é”™è¯¯" << endl; exit(1);
+            cerr << "ÄÚ´æ·ÖÅä´íÎó" << endl; exit(1);
         }
-    }//å¦‚æœç¬¬ä¸€æ¬¡å¼€å§‹åˆ™è›‡å¤´æŒ‡é’ˆä¸ºç©ºï¼Œåˆ†é…ç©ºé—´ï¼›åˆ†é…ç©ºé—´å¤±è´¥åˆ™æŠ¥é”™
+    }//Èç¹ûµÚÒ»´Î¿ªÊ¼ÔòÉßÍ·Ö¸ÕëÎª¿Õ£¬·ÖÅä¿Õ¼ä£»·ÖÅä¿Õ¼äÊ§°ÜÔò±¨´í
     else
         for (int i = 0; i < maxSize; i++)
-            Head[i].x = Head[i].y = 0;//å¦‚æœæ˜¯é‡æ–°å¼€å§‹æ¸¸æˆï¼Œåˆ™æŠŠè›‡èº«å…¨éƒ¨å¤ä½ä¸º0
-    if (head_direction == 'v')//æ ¹æ®å…¶ä»–æ¨¡å—ç¼–ç¨‹è€…éœ€è¦ï¼Œå¯ä»¥å°†åˆå§‹è›‡å¤´æŒ‡å‘ä¸åŒæ–¹å‘
+            Head[i].x = Head[i].y = 0;//Èç¹ûÊÇÖØĞÂ¿ªÊ¼ÓÎÏ·£¬Ôò°ÑÉßÉíÈ«²¿¸´Î»Îª0
+    if (head_direction == 'v')//¸ù¾İÆäËûÄ£¿é±à³ÌÕßĞèÒª£¬¿ÉÒÔ½«³õÊ¼ÉßÍ·Ö¸Ïò²»Í¬·½Ïò
     {
         Head[0].x = Head[1].x = Head[2].x = x;
         Head[0].y = y++;
@@ -45,23 +45,19 @@ void Snake::InitSnake(char head_direction, int x, int y)//æ— è®ºæ˜¯æ¸¸æˆç¬¬ä¸€æ
         Head[1].x = x++;
         Head[2].x = x;
     }
-    length = 3;//åˆå§‹è®¾å®šè›‡æœ‰ä¸‰æ®µï¼Œè›‡å¤´åæ ‡ï¼ˆ5ï¼Œ5ï¼‰ï¼Œè›‡èº«ï¼ˆ5ï¼Œ6ï¼‰å’Œï¼ˆ5ï¼Œ7ï¼‰  
+    length = 3;//³õÊ¼Éè¶¨ÉßÓĞÈı¶Î£¬ÉßÍ·×ø±ê£¨5£¬5£©£¬ÉßÉí£¨5£¬6£©ºÍ£¨5£¬7£©  
     tailx = x;
     taily = y;
-<<<<<<< HEAD
-=======
-    return true;//æˆåŠŸè¿”å›trueï¼Œä»è€Œè¿›è¡Œä¸‹ä¸€æ¬¡æ“ä½œï¼Œè¿˜æ²¡æƒ³å¥½ä»€ä¹ˆæƒ…å†µä¸‹è¿”å›false
->>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
 }
 
-void Snake::AddMaxsize()//å¢åŠ è›‡èº«æœ€å¤§é•¿åº¦
+void Snake::AddMaxsize()//Ôö¼ÓÉßÉí×î´ó³¤¶È
 {
     Point *m_newhead=NULL;
-    maxSize+=50;//ä¸€æ¬¡å¢åŠ 50èŠ‚
+    maxSize+=50;//Ò»´ÎÔö¼Ó50½Ú
     m_newhead = new Point[maxSize];
     if (m_newhead == NULL)
     {
-        cerr << "å†…å­˜åˆ†é…é”™è¯¯" << endl; exit(1);
+        cerr << "ÄÚ´æ·ÖÅä´íÎó" << endl; exit(1);
     }
     for (int i=0; i<length; i++)
         m_newhead[i]=Head[i];
@@ -69,22 +65,22 @@ void Snake::AddMaxsize()//å¢åŠ è›‡èº«æœ€å¤§é•¿åº¦
     Head = m_newhead;
 }
 
-void Snake::Move(char& pre_direction, char& cur_direction)//è›‡çš„çˆ¬è¡Œå‡½æ•°ï¼Œå¯ä½¿è›‡æŒ‰é€‚å½“æ–¹å‘çˆ¬è¡Œï¼›å‚æ•°ä¸ºä¸Šä¸€æ¬¡è¿åŠ¨æ–¹å‘çš„å¼•ç”¨ï¼Œä»¥åŠæ“ä½œè€…æœ€æ–°è¾“å…¥çš„æ–¹å‘çš„å¼•ç”¨
+void Snake::Move(char& pre_direction, char& cur_direction)//ÉßµÄÅÀĞĞº¯Êı£¬¿ÉÊ¹Éß°´ÊÊµ±·½ÏòÅÀĞĞ£»²ÎÊıÎªÉÏÒ»´ÎÔË¶¯·½ÏòµÄÒıÓÃ£¬ÒÔ¼°²Ù×÷Õß×îĞÂÊäÈëµÄ·½ÏòµÄÒıÓÃ
 {
-    int x = Head[0].x, y = Head[0].y;//è·å¾—è›‡å¤´åæ ‡
-    char direction;//ç”¨äºå­˜å‚¨è›‡æœ¬æ¬¡è¿åŠ¨æ–¹å‘
+    int x = Head[0].x, y = Head[0].y;//»ñµÃÉßÍ·×ø±ê
+    char direction;//ÓÃÓÚ´æ´¢Éß±¾´ÎÔË¶¯·½Ïò
     if (((cur_direction != UP && cur_direction != Up) && (cur_direction != DOWN && cur_direction != Down) && (cur_direction != RIGHT && cur_direction != Right) && (cur_direction != LEFT && cur_direction != Left)) ||
         ((pre_direction == LEFT || pre_direction == Left) && (cur_direction == RIGHT || cur_direction == Right)) ||
         ((pre_direction == RIGHT || pre_direction == Right) && (cur_direction == LEFT || cur_direction == Left)) ||
         ((pre_direction == UP || pre_direction == Up) && (cur_direction == DOWN || cur_direction == Down)) ||
         ((pre_direction == DOWN || pre_direction == Down) && (cur_direction == UP || cur_direction == Up)))
-        direction = pre_direction;  //å¦‚æœè¾“å…¥çš„å½“å‰æ–¹å‘ä¸ºâ€œéæ–¹å‘å­—ç¬¦â€ï¼Œæˆ–è€…ä¸ä¸Šä¸€ä¸ªè¿åŠ¨æ–¹å‘æ­£å¥½ç›¸åï¼Œåˆ™é‡‡ç”¨ä¸Šä¸€æ¬¡çš„è¿åŠ¨æ–¹å‘
-    else//å¦åˆ™ï¼Œé‡‡ç”¨æœ€æ–°è¾“å…¥çš„æ–¹å‘ï¼Œå¹¶å°†è¯¥æ–¹å‘åŒæ—¶å­˜å‚¨åˆ°pre_direction
+        direction = pre_direction;  //Èç¹ûÊäÈëµÄµ±Ç°·½ÏòÎª¡°·Ç·½Ïò×Ö·û¡±£¬»òÕßÓëÉÏÒ»¸öÔË¶¯·½ÏòÕıºÃÏà·´£¬Ôò²ÉÓÃÉÏÒ»´ÎµÄÔË¶¯·½Ïò
+    else//·ñÔò£¬²ÉÓÃ×îĞÂÊäÈëµÄ·½Ïò£¬²¢½«¸Ã·½ÏòÍ¬Ê±´æ´¢µ½pre_direction
     {
         direction = cur_direction;
         pre_direction = cur_direction;
     }
-    switch (direction) {//æ ¹æ®è¿åŠ¨æ–¹å‘ï¼Œè·å¾—æœ€æ–°è›‡å¤´ç»“ç‚¹åæ ‡
+    switch (direction) {//¸ù¾İÔË¶¯·½Ïò£¬»ñµÃ×îĞÂÉßÍ·½áµã×ø±ê
     case Up:
     case UP:    y--;
         break;
@@ -100,45 +96,37 @@ void Snake::Move(char& pre_direction, char& cur_direction)//è›‡çš„çˆ¬è¡Œå‡½æ•°ï¼
     default:
         break;
     }
-    for (int i = getLength() - 1; i > 0; i--)//ä½¿è›‡èº«å‘å‰è •åŠ¨ä¸€æ ¼
+    for (int i = getLength() - 1; i > 0; i--)//Ê¹ÉßÉíÏòÇ°Èä¶¯Ò»¸ñ
         Head[i] = Head[i - 1];
-    Head[0].x = x;//å°†è›‡å¤´ç»“ç‚¹åæ ‡æ”¹ä¸ºæœ€æ–°
+    Head[0].x = x;//½«ÉßÍ·½áµã×ø±ê¸ÄÎª×îĞÂ
     Head[0].y = y;
 }
 bool Snake::Eat()
 {
     int x = Head[0].x, y = Head[0].y;
-<<<<<<< HEAD
-    if (length==maxSize)//å¦‚æœå·²è¾¾åˆ°æœ€é•¿ï¼Œåˆ™è°ƒç”¨å¢åŠ è›‡é•¿å‡½æ•°
+    if (length==maxSize)//Èç¹ûÒÑ´ïµ½×î³¤£¬Ôòµ÷ÓÃÔö¼ÓÉß³¤º¯Êı
         AddMaxsize();
     if (x == m_apple.ix && y == m_apple.iy)
-=======
-    if (x == m_apple.ix && y == m_apple.iy)//³Ôµ½¹û×Ó 
->>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
     {
-        if(x==m_apple.ix&&y==m_apple.iy){
+        //if(x==m_apple.ix&&y==m_apple.iy){
         length++;
         if (length == 4 && Head[2].x == 5 && Head[2].y == 6)
         {
-            Head[3].x = 5; Head[3].y = 7;//Èç¹ûÉßÔÚÒÆ¶¯µÄµÚÒ»²½¾Í³Ôµ½ÁË¹û×Ó£¬ÉßÎ²y×ø±êÖ±½Ó¼ÓÒ»¸öµ¥Î»³¤¶È 
+            Head[3].x = 5; Head[3].y = 7;
         }
-<<<<<<< HEAD
         else
         {
             Head[length - 1].x = tailx;
             Head[length - 1].y = taily;
         }
-=======
-        else { Head[length - 1].x = tailx; Head[length - 1].y = taily; }//Èç¹û²»ÊÇµÚÒ»²½³Ôµ½¹û×Ó£¬ÉßÎ²×ø±ê±äÎª×îºóÒ»´ÎÒÆ¶¯Ö®Ç°µÄÉßÎ²×ø±ê 
->>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
         tailx = Head[length - 1].x;
-        taily = Head[length - 1].y;//¸øÉßÎ²µÄ×ø±êÖØĞÂ¸³Öµ 
+        taily = Head[length - 1].y;
         return true;
     }
     else
     {
         tailx = Head[length - 1].x;
-        taily = Head[length - 1].y;//Ã»ÓĞ³Ôµ½¹û×Ó²»Ôö¼Ó³¤¶È£¬Ö»¸Ä±äÉßÎ²×ø±ê 
+        taily = Head[length - 1].y;
         return false;
     }
 }
@@ -151,7 +139,6 @@ bool Snake::Death()
     int i = getLength();
     int k;
     for (k = 4; k <= i - 1; k++) {
-<<<<<<< HEAD
         if (x == Head[k].x && y == Head[k].y)
         {
             cout << "Game Over" << endl;
@@ -163,11 +150,6 @@ bool Snake::Death()
         cout << "Game Over" << endl;
         return true;
     }
-=======
-        if (x == Head[k].x && y == Head[k].y) { cout << "Game Over" << endl; return true; }//Èç¹ûÉßÍ·×²µ½ÉßÉí£¬ÓÎÏ·½áÊø 
-    }
-    if (x == 4 || x == boux || y == 0 || y == bouy) { cout << "Game Over" << endl; return true; }//Èç¹ûÉßÍ·×²µ½Ç½£¬ÓÎÏ·½áÊø 
->>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
     return false;
 }
 
@@ -180,58 +162,33 @@ bool Snake::Death(Snake& s)
     int s1_length = getLength(), s2_length = s.getLength();
     int k;
     for (k = 4; k <= s1_length - 1; k++) {
-        if (s1_x == Head[k].x && s1_y == Head[k].y)  return true; //Èô¸ÃÉßÉßÍ·×²µ½×Ô¼º£¬¸ÃÉßËÀ 
-        if (s1_x == 0 || s1_x == boux || s1_y == 0 || s1_y == bouy)  return true;//Èô¸ÃÉßÉßÍ·×²Ç½£¬¸ÃÉßËÀ 
-        for (k = 0; k <= s2_length - 1; k++) {
-<<<<<<< HEAD
-            if (s1_x == s2[k].x && s1_y == s2[k].y) return true; 
-=======
-            if (s1_x == s2[k].x && s1_y == s2[k].y)  return true; //Èô¸ÃÉßÉßÍ·×²µ½ÁíÒ»ÌõÉß£¬¸ÃÉßËÀ 
->>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
-        }
+        if (s1_x == Head[k].x && s1_y == Head[k].y)  return true;
     }
+        if (s1_x == 0 || s1_x == boux || s1_y == 0 || s1_y == bouy)  return true;
+        for (k = 0; k <= s2_length - 1; k++) {
+            if (s1_x == s2[k].x && s1_y == s2[k].y) return true; 
+        }
     return false;
 }
 
-int Win(Snake & s1, Snake & s2)//åŒè›‡æ¨¡å¼ä¸‹ï¼Œåˆ¤æ–­ä¸¤æ¡è›‡çš„è¾“èµ¢ï¼›ä¼ å…¥ä¸¤æ¡è›‡çš„å¼•ç”¨ï¼›
+int Win(Snake & s1, Snake & s2)//Ë«ÉßÄ£Ê½ÏÂ£¬ÅĞ¶ÏÁ½ÌõÉßµÄÊäÓ®£»´«ÈëÁ½ÌõÉßµÄÒıÓÃ£»
 {
-    bool s1_death = s1.Death(s2), s2_death = s2.Death(s1);//è·å¾—ä¸¤æ¡è›‡çš„æ­»äº¡æƒ…å†µ
-    int s1_length=s1.getLength(),s2_length=s2.getLength();//è·å¾—ä¸¤æ¡è›‡çš„è›‡èº«æ€»é•¿
-    if (!s1_death && !s2_death)//å¦‚æœä¸¤æ¡è›‡æ²¡æœ‰æ­»ï¼Œè¿”å›0
+    bool s1_death = s1.Death(s2), s2_death = s2.Death(s1);//»ñµÃÁ½ÌõÉßµÄËÀÍöÇé¿ö
+    int s1_length=s1.getLength(),s2_length=s2.getLength();//»ñµÃÁ½ÌõÉßµÄÉßÉí×Ü³¤
+    if (!s1_death && !s2_death)//Èç¹ûÁ½ÌõÉßÃ»ÓĞËÀ£¬·µ»Ø0
         return 0;
     else
     {
-<<<<<<< HEAD
-        if (s1_death && s2_death)//å¦‚æœä¸¤æ¡è›‡åŒæ—¶æ­»äº¡ï¼Œåˆ™æ¯”è¾ƒè›‡èº«æ€»é•¿ï¼Œé•¿è€…è·èƒœï¼Œç­‰é•¿åˆ™å¹³æ‰‹
+        if (s1_death && s2_death)//Èç¹ûÁ½ÌõÉßÍ¬Ê±ËÀÍö£¬Ôò±È½ÏÉßÉí×Ü³¤£¬³¤Õß»ñÊ¤£¬µÈ³¤ÔòÆ½ÊÖ
         {
-            if (s1_length > s2_length) return 1;//ç©å®¶1è·èƒœ
-            else if (s1_length < s2_length) return 2;//ç©å®¶2è·èƒœ
-            else return 3;//å¹³å±€
+            if (s1_length > s2_length) return 1;//Íæ¼Ò1»ñÊ¤
+            else if (s1_length < s2_length) return 2;//Íæ¼Ò2»ñÊ¤
+            else return 3;//Æ½¾Ö
         }
-        else//å¦‚æœåªæœ‰ä¸€æ¡è›‡æ­»ï¼Œåˆ™ä»å­˜æ´»ç€èƒœ
+        else//Èç¹ûÖ»ÓĞÒ»ÌõÉßËÀ£¬ÔòÈÔ´æ»î×ÅÊ¤
         {
-            if (s2_death) return 1;//ç©å®¶1è·èƒœ
-            else return 2;//ç©å®¶2è·èƒœ
+            if (s2_death) return 1;//Íæ¼Ò1»ñÊ¤
+            else return 2;//Íæ¼Ò2»ñÊ¤
         }
     }
 }
-=======
-        bool s1_death = s1.Death(s2), s2_death = s2.Death(s2);
-        if (!s1_death && !s2_death)//Èç¹û¶¼Ã»ËÀ£¬ÓÎÏ·¼ÌĞø 
-            return 0;
-        else
-        {
-            if (s1_death && s2_death)
-            {
-                if (s1.getLength() > s2.getLength()) return 1;//Èç¹û1ºÅÉßÉßÉí³¤¶È´óÓÚ2ºÅÉß£¬Ôò1ºÅÉßÓ® 
-                else if (s1.getLength() < s2.getLength()) return 2;//Èç¹û2ºÅÉßÉßÉí³¤¶È´óÓÚ1ºÅÉß£¬Ôò2ºÅÉßÓ® 
-                else return 3;//Èç¹ûÉßÉí³¤¶ÈÏàµÈ£¬ÔòÆ½¾Ö 
-            }
-            else
-            {
-                if (s2_death) return 1;//Èç¹û2ºÅÉßËÀÍö£¬Ôò1ºÅÉßÓ® 
-                else return 2; 
-            }
-        }
-    }
->>>>>>> 7ec958dca07898da6a47489bd5a9467dd2a20c82
