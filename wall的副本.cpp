@@ -9,3 +9,4 @@ int Wall::GetCol()
 {
 	return Col;
 }
+

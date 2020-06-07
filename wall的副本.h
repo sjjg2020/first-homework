@@ -12,13 +12,10 @@ class Wall
 	}
 	int GetRow();
 	int GetCol();
-//	void newwall();//刷新 
-//	void putwall();//输出 
-	//void wallchange(int a,int b,char c);//墙是输出中心 
-	char Newwall();//随时间形成的新的障碍 （新） 
-//	void difficulty(int a) ;//难度设置 (新) 
+
 private:
 	int Row;
 	int Col;
+	//char wall[Row][Col];//所含字符 
 };  
 #endif/* wall_h */

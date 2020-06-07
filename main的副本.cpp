@@ -122,7 +122,9 @@ int main(){
 		outtextxy(470, 270, _T("socre:" ));//输出游戏结束以及分数 
 		char s[5];
 		sprintf_s(s, "%d", len*100);//将整形len转换成字符串
-		outtextxy(600, 270, s);//出入分数 
+                for (int z=0;z<5;z++)
+        for (int z=0;z<5;z++)
+		outtextxy(600, 270, s[z]);//出入分数 
 		Sleep(3000);//静止显示结果一段时间 
 	}
 	else {
